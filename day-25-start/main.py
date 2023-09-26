@@ -60,5 +60,7 @@ data_dict = {
 data = pandas.DataFrame(data_dict)
 data.to_csv("new_data.csv")
 
+data =
+
 
 
