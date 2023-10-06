@@ -5,10 +5,11 @@ window.title("My first GUI program")
 window.minsize(width=500, height=300)
 
 my_label = Label(text="I am a label", font=("Arial", 24, "bold", "italic"))
-my_label.pack(side="top")
+#my_label.pack(side="top")
+my_label.place(x=0, y=0)
 
 my_label["text"] = "New Text"
-my_label.config(text="New Text")
+my_label.config(text="placed at the top left ")
 
 input = Entry()
 
