@@ -22,10 +22,11 @@ def button_clicked():
 
 
 button = Button(text="print text", command=button_clicked)
+button2 = Button(text="New button on the grid")
 input.grid(column=4, row=4)
 # button.pack()
 button.grid(column=3, row=3)
-
+button2.grid(column=4, row=0)
 
 #Entry
 
