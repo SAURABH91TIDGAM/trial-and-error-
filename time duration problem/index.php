@@ -39,23 +39,13 @@ function time_duration($sec)
   {
         $weeks = floor($sec / 604800);
         $days = floor(($sec % 604800) / 86400);
-        $hours = floor(($sec - (($days * 604800) + ($days * 86400))) / (3600*24));
+        $hours = floor(($sec - (($weeks * 604800) + ($days * 86400))) / (60 * 60));
  
         echo "Time duration is :" . $weeks . "weeks " . $days . "days " . $hours . "hours";
-
-  }
-  elseif($sec >=  31536000)
-  {
-        $years = floor($sec / 2592000);
-        $months = floor(($sec % 2592000) / 604800);
-        $days = floor(($sec - (($years * 25922000) + ($months * 604800))) / (604800));
-
-        echo "Time duration is :" . $years . "years " . $months . "months " . $days . "days";
-
   }
 
 
 
 }
 
-time_duration(176586700);
+time_duration(1765689);
