@@ -3,6 +3,25 @@ from tkinter import messagebox
 from random import randint, choice, shuffle
 import pyperclip
 import json
+
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+def find_password():
+    website = website_entry.get()
+    try:
+        with open("data.json") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No Data File Found.")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message=f"No details for {website} exists")
+
+
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -48,10 +67,10 @@ def save():
                 data = json.load(data_file)
                 # print(type(data))
                 #updating old data with new data
-                data.update(new_data)
+                # data.update(new_data)
         except FileNotFoundError:
             with open("data.json", "w") as data_file:
-                json.update(new_data, data_file, indent=4)
+                json.dump(new_data, data_file, indent=4)
 
         else:
             #updating old data with new data
@@ -82,14 +101,15 @@ canvas.grid(row=0, column=1)
 
 website_label = Label(text="website")
 website_label.grid(row=1, column=0)
+search_button = Button()
 email_label = Label(text="Email/Username")
 email_label.grid(row=2, column=0)
 password_label = Label(text="password")
 password_label.grid(row=3, column=0)
 
 #Entries
-website_entry = Entry(width=56)
-website_entry.grid(row=1, column=1, columnspan=2)
+website_entry = Entry(width=33)
+website_entry.grid(row=1, column=1)
 email_entry = Entry(width=56)
 email_entry.grid(row=2, column=1, columnspan=2)
 email_entry.insert(0, "saurabhtidgam1991@gmail.com")
@@ -97,8 +117,10 @@ password_entry = Entry(width=33)
 password_entry.grid(row=3, column=1)
 
 #Buttons
+search_button = Button(text="Search", width=18, command=find_password)
 generate_password_button = Button(text="Generate Password", width=18, command=generate_password)
 generate_password_button.grid(row=3, column=2)
+search_button.grid(row=1, column=2)
 add_button = Button(text="Add", width=47, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
 
