@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import randint, choice, shuffle
 import pyperclip
-import math
+import json
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -35,16 +35,33 @@ def save():
     email = email_entry.get()
     password = password_entry.get()
 
+    new_data = {website: {"email": email, "password": password}}
+
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="OOPS", message="Please make sure you havent left any field empty")
     else:
-        is_okay = messagebox.askokcancel(title=website, message=f"These are the details entered: \n Email:{email} \nPassword: {password} Is it ok to save?")
+        # is_okay = messagebox.askokcancel(title=website, message=f"These are the details entered: \n Email:{email} \nPassword: {password} Is it ok to save?")
+        with open("data.json", "r") as data_file:
+            # json.dump(new_data, data_file, indent=4)
+            #Reading old data
+            data = json.load(data_file)
+            # print(type(data))
+            #updating old data with new data
+            data.update(new_data)
 
-        if is_okay:
-            with open("password_directory.txt", "a") as data_file:
-                data_file.write(f"{website} | {email} | {password}\n")
-                website_entry.delete(0, END)
-                password_entry.delete(0, END)
+
+        with open("data.json", "w") as data_file:
+            #Saving updated data
+            json.dump(data, data_file, indent=4)
+
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
+
+        # if is_okay:
+        #     with open("password_directory.txt", "a") as data_file:
+        #         data_file.write(f"{website} | {email} | {password}\n")
+        #         website_entry.delete(0, END)
+        #         password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
