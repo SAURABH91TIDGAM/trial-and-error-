@@ -4,7 +4,7 @@ from twilio.rest import Client
 from twilio.http.http_client import TwilioHttpClient
 
 proxy_client = TwilioHttpClient()
-proxy_client.session.proxies = {'https': os.environ['https_proxy']}
+proxy_client = TwilioHttpClient(proxy={'http': os.environ["http_proxy"], 'https': os.environ["https_proxy"]})
 
 api_key = "f449e17414d95d80d2c53e8c3efcd728"
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/weather"
