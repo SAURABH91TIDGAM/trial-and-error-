@@ -1,4 +1,6 @@
 import requests
+from twilio.rest import Client
+
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -8,6 +10,9 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 STOCK_API_KEY = "38UKUOSU8CSKXOYM"
 NEWS_API_KEY = "dffabcbf093a4ed5ae33f2cdfaffbce0"
+
+TWILIO_SID = 'AC4570fa63efab1b73363b811aa4673cd3'
+TWILIO_AUTH_TOKEN = "211248edecae245b8c6e88ee3907500c"
 
 
 ## STEP 1: Use https://newsapi.org/docs/endpoints/everything
@@ -65,7 +70,17 @@ if diff_percent < 1:
 # Send a separate message with each article's title and description to your phone number. 
 #HINT 1: Consider using a List Comprehension.
 
-    formatted = [f"headline: {articles['title']}. \nBrief: {article['description']}" for aricle in three_articles]
+    formatted_articles = [f"headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
+    client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
+
+    for article in formatted_articles:
+        message = client.messages.create(
+            body=article,
+            from_='+731613912',
+            to='+918878530091'
+        )
+
+
 
 
 #Optional: Format the SMS message like this: 
