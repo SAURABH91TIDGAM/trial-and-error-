@@ -76,7 +76,7 @@ if diff_percent < 1:
     for article in formatted_articles:
         message = client.messages.create(
             body=article,
-            from_='+731613912',
+            from_='+17316137912',
             to='+918878530091'
         )
 
