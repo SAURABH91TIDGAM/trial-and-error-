@@ -2,7 +2,7 @@ import requests
 from twilio.rest import Client
 
 
-STOCK = "TSLA"
+STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
@@ -22,7 +22,7 @@ TWILIO_AUTH_TOKEN = "211248edecae245b8c6e88ee3907500c"
 
 stock_params = {
     "function": "TIME_SERIES_DAILY",
-    "symbol": STOCK,
+    "symbol": STOCK_NAME,
     "apikey": STOCK_API_KEY
 }
 
@@ -41,6 +41,12 @@ day_before_yesterday_closing_price = day_before_yesterday_data["4. close"]
 print(day_before_yesterday_closing_price)
 
 difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
+up_down = None
+if difference > 0:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
+
 print(difference)
 
 diff_percent = (difference / float(yesterday_closing_price)) * 100
@@ -70,7 +76,7 @@ if diff_percent < 1:
 # Send a separate message with each article's title and description to your phone number. 
 #HINT 1: Consider using a List Comprehension.
 
-    formatted_articles = [f"headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
+    formatted_articles = [f"{STOCK_NAME}: {up_down}{diff_percent}%\nheadline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
     for article in formatted_articles:
