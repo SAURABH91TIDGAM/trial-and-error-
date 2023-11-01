@@ -1,4 +1,5 @@
 import requests
+import os
 from datetime import datetime
 
 nutritionix_endpoint = "https://trackapi.nutritionix.com/v2/natural/"
@@ -10,11 +11,11 @@ WEIGHT_KG = "80"
 HEIGHT_CM = "176"
 AGE = "31"
 
-APP_ID = "1153ebf8"
-API_KEY = "d979a9220f30f720fed3d8e0cfa5971d"
+APP_ID = os.environ["NT_APP_ID"]
+API_KEY = os.environ["NT_API_KEY"]
 
 exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheet_endpoint = "https://api.sheety.co/1c3bc1224c991eee4a08a6f5942a2b60/myWorkouts/workouts"
+sheet_endpoint = os.environ["nutritionix_endpoint"]
 exercise_text = input("Tell me which exercises you did: ")
 
 headers = {
@@ -37,6 +38,9 @@ print(result)
 today_date = datetime.now().strftime("%d/%m/%Y")
 now_time = datetime.now().strftime("%X")
 
+
+
+
 for exercise in result["exercises"]:
     sheet_inputs = {
         "workout": {
@@ -47,16 +51,16 @@ for exercise in result["exercises"]:
             "calories": exercise["nf_calories"]
         }
     }
+bearer_headers = {"Authorization": f"Bearer {os.environ['TOKEN']}"}
 
-    bearer_headers = {
-        "Authorization": "Bearer sheety_token@for*google#spreadsheet"
-    }
-    sheet_response = requests.post(
-        sheet_endpoint,
-        json=sheet_inputs,
-        headers=bearer_headers
+response = requests.post(
+    sheet_endpoint,
+    json=sheet_inputs,
+    headers=bearer_headers
     )
 
-    # sheet_response = requests.post(sheet_endpoint, json=sheet_inputs)
 
-    print(sheet_response.text)
+
+    #response = requests.post(exercise_endpoint, json=sheet_inputs)
+
+print(response.text)
