@@ -1,4 +1,5 @@
 import requests
+from flight_data import FlightData
 
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 TEQUILA_API_KEY = "OceQWiqVzt2dc40ylaAETCIYIMcj7zbh"
@@ -35,6 +36,7 @@ class FlightSearch:
             headers=headers,
             params=query,
         )
+
 
         try:
             data = response.json()["data"][0]
