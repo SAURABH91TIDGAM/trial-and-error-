@@ -4,6 +4,7 @@ import requests
 SHEETY_PRICES_ENDPOINT = YOUR SHEETY PRICES ENDPOINT
 
 
+
 class DataManager:
 
     def __init__(self):
