@@ -3,9 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
 
-chrome_driver_path = "/Users/saurabh/Development/chromedriver"
-driver = webdriver.ChromeOptions(chrome_driver_path)
+chrome_driver_path = "C:/Users/saura/.cache/selenium/chromedriver"
+driver = webdriver.Chrome()
 
 driver.get("https://en.wikipedia.org/wiki/Main_Page")
 article_count = driver.find_element(By.CSS_SELECTOR, "#articlecount a")
-print(article_count.text)
+
+article_count.click()
+
+all_portals = driver.find_element(By.LINK_TEXT, "All portals")
+
+driver.quit()
