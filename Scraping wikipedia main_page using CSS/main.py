@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
@@ -12,5 +13,9 @@ article_count = driver.find_element(By.CSS_SELECTOR, "#articlecount a")
 article_count.click()
 
 all_portals = driver.find_element(By.LINK_TEXT, "All portals")
+
+search = driver.find_element(By.NAME, "search")
+search.send_keys("Python")
+search.send_keys(keys.ENTER)
 
 driver.quit()
