@@ -38,20 +38,68 @@ password_field = driver.find_element(by=By.ID, value="password")
 password_field.send_keys(ACCOUNT_PASSWORD)
 password_field.send_keys(Keys.ENTER)
 
-# You may be presented with a CAPTCHA - Solve the Puzzle Manually
+# # You may be presented with a CAPTCHA - Solve the Puzzle Manually
+# input("Press Enter when you have solved the Captcha")
+#
+# #Locate the apply button
+# time.sleep(5)
+# apply_button = driver.find_element(by=By.CSS_SELECTOR, value=".jobs-s-apply button")
+# apply_button.click()
+#
+# #If application requires phone number and the field is empty, then fill in the number.
+# time.sleep(5)
+# phone = driver.find_element(by=By.CSS_SELECTOR, value="input[id*=phoneNumber]")
+# if phone.text == "":
+#     phone.send_keys(PHONE)
+#
+# #Submit the application
+# submit_button = driver.find_element(by=By.CSS_SELECTOR, value="footer button")
+# submit_button.click()
+
+# CAPTCHA - Solve Puzzle Manually
 input("Press Enter when you have solved the Captcha")
 
-#Locate the apply button
+# Get Listings
 time.sleep(5)
-apply_button = driver.find_element(by=By.CSS_SELECTOR, value=".jobs-s-apply button")
-apply_button.click()
+all_listings = driver.find_elements(by=By.CSS_SELECTOR, value=".job-card-container--clickable")
 
-#If application requires phone number and the field is empty, then fill in the number.
+# Apply for Jobs
+for listing in all_listings:
+    print("Opening Listing")
+    listing.click()
+    time.sleep(2)
+    try:
+        # Click Apply Button
+        apply_button = driver.find_element(by=By.CSS_SELECTOR, value=".jobs-s-apply button")
+        apply_button.click()
+
+        # Insert Phone Number
+        # Find an <input> element where the id contains phoneNumber
+        time.sleep(5)
+        phone = driver.find_element(by=By.CSS_SELECTOR, value="input[id*=phoneNumber]")
+        if phone.text == "":
+            phone.send_keys(PHONE)
+
+        # Check the Submit Button
+        submit_button = driver.find_element(by=By.CSS_SELECTOR, value="footer button")
+        if submit_button.get_attribute("data-control-name") == "continue_unify":
+            abort_application()
+            print("Complex application, skipped.")
+            continue
+        else:
+            # Click Submit Button
+            print("Submitting job application")
+            submit_button.click()
+
+        time.sleep(2)
+        # Click Close Button
+        close_button = driver.find_element(by=By.CLASS_NAME, value="artdeco-modal__dismiss")
+        close_button.click()
+
+    except NoSuchElementException:
+        abort_application()
+        print("No application button, skipped.")
+        continue
+
 time.sleep(5)
-phone = driver.find_element(by=By.CSS_SELECTOR, value="input[id*=phoneNumber]")
-if phone.text == "":
-    phone.send_keys(PHONE)
-
-#Submit the application
-submit_button = driver.find_element(by=By.CSS_SELECTOR, value="footer button")
-submit_button.click()
+driver.quit()
