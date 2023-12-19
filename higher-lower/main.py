@@ -5,8 +5,6 @@ random_number = random.randint(0, 9)
 print(random_number)
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
-
 
 @app.route('/')
 def home():
