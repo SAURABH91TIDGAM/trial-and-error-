@@ -9,6 +9,20 @@ let firstName = 'Matilda';
 let jonas_matilda = "JM";
 let $function = 27;
 
+const birthyear = 1991
+var job = "Programmer"
+
 console.log(firstName);
 console.log(jonas_matilda);
 console.log($function);
+let javaScriptIsFun = true
+if (javaScriptIsFun) 
+{
+    console.log(javaScriptIsFun);
+    console.log(typeof javaScriptIsFun);
+    console.log(typeof firstName);
+    console.log(typeof jonas_matilda);
+    console.log(typeof $function);
+    job = "Teacher"
+    console.log(job);
+}
