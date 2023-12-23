@@ -28,10 +28,25 @@ let year = 2023
 //     console.log(job);
 // }
 
-const jonas = "I'm " + firstName + " a " + (year - birthyear) + 'year old ' + job + '!';
-console.log(jonas);
+// const jonas = "I'm " + firstName + " a " + (year - birthyear) + 'year old ' + job + '!';
+// console.log(jonas);
 
-const jonasNew = `I'm  ${ firstName}, a ${year - birthyear} year old ${job}!`;
-console.log(jonasNew);
+// const jonasNew = `I'm  ${ firstName}, a ${year - birthyear} year old ${job}!`;
+// console.log(jonasNew);
 
-console.log(`just a regular string`);
+// console.log(`just a regular string`);
+
+console.log(Number(birthyear), birthyear);
+console.log(Number(birthyear) + 18);
+console.log(Number('jonas'));
+console.log(Number(typeof NaN));
+
+console.log(String(23), 23);
+
+console.log('I am' + 32 + ' years old');
+console.log('23' - '10' - 3);
+console.log('23' / '2');
+
+let n = '1' + 1; //11
+n = n - 1;
+console.log(n);
