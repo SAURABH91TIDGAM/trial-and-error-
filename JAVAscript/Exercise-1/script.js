@@ -43,10 +43,13 @@ console.log(Number(typeof NaN));
 
 console.log(String(23), 23);
 
-console.log('I am' + 32 + ' years old');
-console.log('23' - '10' - 3);
-console.log('23' / '2');
+console.log('I am ' + 32  + ' years old');
+console.log('23' - '10' - 3); // the result will be 10
+console.log('23' / '2'); // the result will be 11.5
 
-let n = '1' + 1; //11
+let n = '1' + 1; //11  this will not result in 2 it will concatinate the two and make it 11.
 n = n - 1;
 console.log(n);
+
+console.log(2 + 3 + 4 + '5');
+console.log('10'-'4'-'3'-2+'5');
