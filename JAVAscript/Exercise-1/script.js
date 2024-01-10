@@ -79,3 +79,20 @@ let year = 2023
 // {
 //     console.log("Height is UNDEFINED!");    
 // }
+
+
+const age = '18';
+if (age === 18)
+{
+    console.log("You just became an adult:D (strict)");
+}
+
+if (age == 18)
+{
+    console.log("You just became an adult:D (loose)");
+}
+
+const favourite = prompt("Whats your favourite ?")
+console.log(favourite);
+console.log(typeof favourite);
+
