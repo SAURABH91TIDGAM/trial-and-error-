@@ -96,3 +96,16 @@ const favourite = prompt("Whats your favourite ?")
 console.log(favourite);
 console.log(typeof favourite);
 
+if (favourite === 23) {
+    console.log("cool 23 is an amazing number")
+}
+else if (favourite === 7) {
+    console.log("cool 7 is an cool number")
+}
+else if (favourite === 9) {
+    console.log("cool 9 is an amazing number")
+}
+else {
+    console.log("Number is not 13 or 7 or 9")
+}
+
