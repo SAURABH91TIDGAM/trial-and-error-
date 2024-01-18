@@ -77,35 +77,46 @@ let year = 2023
 // }
 // else
 // {
-//     console.log("Height is UNDEFINED!");    
+//     console.log("Height is UNDEFINED!");
 // }
 
 
-const age = '18';
-if (age === 18)
+// const age = '18';
+// if (age === 18)
+// {
+//     console.log("You just became an adult:D (strict)");
+// }
+
+// if (age == 18)
+// {
+//     console.log("You just became an adult:D (loose)");
+// }
+
+// const favourite = prompt("Whats your favourite ?")
+// console.log(favourite);
+// console.log(typeof favourite);
+
+// if (favourite === 23) {
+//     console.log("cool 23 is an amazing number")
+// }
+// else if (favourite === 7) {
+//     console.log("cool 7 is an cool number")
+// }
+// else if (favourite === 9) {
+//     console.log("cool 9 is an amazing number")
+// }
+// else {
+//     console.log("Number is not 13 or 7 or 9")
+// }
+
+
+const day = 'monday';
+
+switch (day)
 {
-    console.log("You just became an adult:D (strict)");
-}
-
-if (age == 18)
-{
-    console.log("You just became an adult:D (loose)");
-}
-
-const favourite = prompt("Whats your favourite ?")
-console.log(favourite);
-console.log(typeof favourite);
-
-if (favourite === 23) {
-    console.log("cool 23 is an amazing number")
-}
-else if (favourite === 7) {
-    console.log("cool 7 is an cool number")
-}
-else if (favourite === 9) {
-    console.log("cool 9 is an amazing number")
-}
-else {
-    console.log("Number is not 13 or 7 or 9")
+    case 'monday': //day of the week === Monday
+        console.log("Plan tghe course structure");
+        console.log("Go to codeing meetup");
+        break;
 }
 
