@@ -118,5 +118,21 @@ switch (day)
         console.log("Plan tghe course structure");
         console.log("Go to codeing meetup");
         break;
+    case 'tuesday': //day of the week === Monday
+        console.log("Prepare theory videos");
+        break;
+    case 'wednesday': //day of the week === Monday
+        console.log("wednesday");
+        console.log("Go to codeing meetup");
+        break;
+    case 'thursday':
+    case 'friday':
+        console.log("write code examples");
+        break;
+    case 'saturday':
+        console.log("enjoy the weekend");
+        break;
+    default:
+        console.log("Not a valid day");
 }
 
