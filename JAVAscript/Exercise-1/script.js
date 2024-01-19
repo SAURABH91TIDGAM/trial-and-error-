@@ -110,7 +110,7 @@ let year = 2023
 // }
 
 
-const day = 'monday';
+const day = 'friday';
 
 switch (day)
 {
@@ -130,9 +130,35 @@ switch (day)
         console.log("write code examples");
         break;
     case 'saturday':
-        console.log("enjoy the weekend");
+    case 'sunday':    
+        console.log("Enjoy the weekend :D");
         break;
     default:
         console.log("Not a valid day");
 }
+
+if (day === 'monday')
+{
+    console.log("plan course structure");
+    console.log("Go to coding meet up");
+} else if (day === 'tuesday')
+{
+    console.log("prepare theory structure")
+} else if (day === 'wednesday' || day === 'thursday')
+{
+    console.log("prepare theory structure");
+} else if (day === 'friday')
+{
+    console.log("Record videos");
+} else if (day === 'saturday' || day === 'sunday')
+{
+    console.log("Enjoy the Weekend :D");
+}
+else {
+    console.log('Not a valid  day');
+}
+
+
+
+
 
