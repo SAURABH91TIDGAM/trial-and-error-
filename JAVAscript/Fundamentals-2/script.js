@@ -118,4 +118,31 @@ console.log(yearsUntilRetirement(1991, 'Saurabh'));
 
 
 
-console.log(yearsUntilRetirement(1991, 'pranjal'));
+console.log(yearsUntilRetirement(1950, 'pranjal'));
+
+
+/* Write your code below. Good luck! 🙂 */
+
+
+const calcAverage = (s1,s2,s3) =>  (s1+s2+s3)/3;
+
+let scoreDolphins = calcAverage(44,23,71);
+let scoreKoalas = calcAverage(65,54,49);
+
+console.log(scoreKoalas, scoreDolphins);
+
+const checkWinner = function(avgKoalas, avgDolphins){
+    if (avgDolphins >= 2 * avgKoalas){
+        console.log(`Dolphins win 🏆 ( ${avgDolphins} vs. ${avgkoalas})`)
+    }
+    else if(avgKoalas >= 2 * avgDolphins)
+    {
+        console.log(`Koalas win 🏆 ( ${avgKoalas} vs. ${avgDolphins})`)
+    }
+    else
+    {
+        console.log('No team wins') 
+    }
+}
+
+checkWinner(scoreKoalas, scoreDolphins);
