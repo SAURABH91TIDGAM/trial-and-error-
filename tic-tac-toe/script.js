@@ -19,6 +19,24 @@ const winPatterns = [
     [6, 7, 8],
 ]
 
+  var player1NameInput = document.getElementById('player1NameInput');
+  var player2NameInput = document.getElementById('player2NameInput');
+
+  // Add event listeners to capture input changes
+  player1NameInput.addEventListener('blur', savePlayerNames);
+  player2NameInput.addEventListener('blur', savePlayerNames);
+
+  function savePlayerNames() {
+    // Get player names from input fields
+    var player1Name = player1NameInput.value;
+    var player2Name = player2NameInput.value;
+
+    // Store player names in local storage
+    localStorage.setItem('player1Name', player1Name);
+    localStorage.setItem('player2Name', player2Name);
+}
+
+
 fragments.forEach((fragment) => {
     fragment.addEventListener('click', () => {
         console.log("box was clicked");
@@ -73,29 +91,25 @@ fragments.forEach((fragment) => {
     const showWinner = (winner) => {
         instructions.classList.add("hide");
         if (winner === 'O') {
-            message.innerText = `Congratulations, Winner is Player One playing with ${winner}`;
+            message.classList.add('congratulations');
+            message.innerText = `Congratulations, Winner is Player One ${localStorage.player1Name} playing with ${winner}`;
             msgContainer.classList.remove("hide");
             
             disableFragments();
         }
         else if (winner === 'X') {
-            message.innerText = `Congratulations, Winner is Player Two playing with ${winner}`;
+            message.classList.add('congratulations');
+            message.innerText = `Congratulations, Winner is Player Two ${localStorage.player2Name} playing with ${winner}`;
             msgContainer.classList.remove("hide");
             disableFragments();
         }
-        else if (winner === ""){
-            message.innerText = `It's a draw`;
-            msgContainer.classList.remove("hide");
-            disableFragments();
-        }
+
+        
      }
 
 
     const checkWinner = () => {
         for (let pattern of winPatterns) {
-            // console.log(pattern[0], pattern[1], pattern[2]);
-            // console.log(fragments[pattern[0]], fragments[pattern[1]], fragments[pattern[2]]);
-            // console.log(fragments[pattern[0]].innerText, fragments[pattern[1]].innerText, fragments[pattern[2]].innerText);
 
             let positionOneValue = fragments[pattern[0]].innerText;
             let positionTwoValue = fragments[pattern[1]].innerText;
@@ -104,6 +118,7 @@ fragments.forEach((fragment) => {
             if (positionOneValue != "" && positionTwoValue != "" && positionThreeValue != "") {
                 if (positionOneValue === positionTwoValue && positionTwoValue === positionThreeValue) {
                     showWinner(positionOneValue);
+
                 }
             }
         }
