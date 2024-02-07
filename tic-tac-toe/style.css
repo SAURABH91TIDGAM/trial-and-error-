@@ -10,10 +10,9 @@ body{
 
 .container{
     height: 70vh;
-      display: flex;
-
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game{
@@ -30,6 +29,7 @@ body{
     height: 18vmin;
     width: 16vmin;
     padding: 0;
+    border-color: #FAFF7F;
     border-radius: 1rem;
     font-size: 9vmin;
     color: #FF5154;
@@ -42,19 +42,33 @@ body{
   color: #fff;
   border-radius: 1rem;
   border: none;
+  transition: trasform 1000ms;
 }
+
+#reset-btn:hover,
+#reset-btn:focus{
+    transform: translateY(0.5rem);
+}
+
+
 #newgame-btn{
-      padding: 1rem;
-  font-size: 1.25rem;
-  background-color: #56CBF9;
-  color: #fff;
-  border-radius: 1rem;
-  border: none;
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #56CBF9;
+    color: #fff;
+    border-radius: 1rem;
+    border: none;
+    transition: trasform 1000ms;
+}
+
+#newgame-btn:hover,
+#newgame-btn:focus{
+    transform: translateY(-0.5rem);
 }
 
 #message{
     color: #FF729F;
-    font-size: 4vmin;
+    font-size: 6vmin;
 }
 .message-container{
     height: 100vmin;
@@ -67,4 +81,50 @@ body{
 
 .hide{
     display: none;
+}
+
+
+.congratulations{
+    animation: congrats 2000ms infinite;
+}
+
+@keyframes congrats{
+    0%{
+        color: #81F4E1;
+        text-decoration:wavy;
+        text-shadow: #42273B;
+        text-decoration-color: #ABC8C0;
+    }
+    20%{
+        color: #FAFF7F;
+        text-decoration:wavy;
+        text-shadow: #4C5454;
+        text-decoration-color: #56CBF9;
+    }
+    40%{
+        color: #ABC8C0;
+        text-decoration:wavy;
+        text-shadow: #1EA896;
+        text-decoration-color: #FF729F;
+    }
+    60%{
+        color: #1EA896;
+        text-decoration:wavy;
+        text-shadow: #D3C4D1;
+        text-decoration-color: #9EE493;
+    }
+    80%{
+        color: #ABC8C0;
+        text-decoration:wavy;
+        text-shadow: #70566D;
+        text-decoration-color: #56CBF9;
+    }
+    100%{
+        color: #81F4E1;
+        text-decoration:wavy;
+        text-shadow: #FAFF7F;
+        text-decoration-color: #FF5154;
+    }
+
+
 }
