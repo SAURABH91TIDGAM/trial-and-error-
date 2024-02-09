@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <!-- CSS file Included -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Tic-Tac-Toe</h1>
+
+        <p id="instructions">
+            Game starts by just Tap on
+        box<br>First Player name
+        <input type="text" id="player1NameInput" name="playerOne">
+        as
+        <b>Player O </b>And Second Player
+        <input type="text" id="player2NameInput" name="playerTwo"> as
+        <b>Player X</b>
+        </p>
+        <div class="message-container hide">
+            <p id="message">Winner is player</p>
+            <button type="button" id="newgame-btn">New Game</button>
+
+        </div>
+
+
+        <div class = "container">
+            <div class = "game">
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button type="button" class="fragment"></button>
+                <button id="reset-btn">Reset Game</button>
+            </div>
+            
+        </div>
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</body>
+<script src="script.js"></script>
+
+</html>
