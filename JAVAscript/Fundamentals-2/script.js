@@ -161,3 +161,12 @@ console.log(friends[0]);
 console.log(friends[1]);
 console.log(friends.length);
 console.log(friends[friends - 1]);
+
+friends[2] = 'Jay';
+
+console.log(friends);
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends]
+console.log(jonas);
+console.log(jonas.length);
